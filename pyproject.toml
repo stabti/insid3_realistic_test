@@ -17,7 +17,7 @@ dependencies = [
     "torchmetrics",
     "termcolor",
     "matplotlib",
-    "CRF @ git+https://github.com/netw0rkf10w/CRF.git",
+    # "CRF @ git+https://github.com/netw0rkf10w/CRF.git",  # optional; needs nvcc to build. Re-enable if CUDA toolkit installed.
 ]
 
 [tool.uv]
@@ -35,8 +35,8 @@ name = "pytorch-cu126"
 url = "https://download.pytorch.org/whl/cu126"
 explicit = true
 
-[tool.uv.extra-build-dependencies]
-crf = [
-    "setuptools",
-    "torch==2.7.1",
-]
+# [tool.uv.extra-build-dependencies]
+# crf = [
+#     "setuptools",
+#     "torch==2.7.1",
+# ]

@@ -6,3 +6,4 @@ output
 data
 pretrain
 CRF
+sam_ckpts
