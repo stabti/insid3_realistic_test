@@ -4,8 +4,8 @@ A hands-on test of [INSID3](https://github.com/visinf/INSID3) (training-free, on
 
 > This repo is a fork-style clone of the official INSID3 code. All credit for the method goes to its authors; see [Credits](#credits). The original README is kept in [`UPSTREAM_README.md`](UPSTREAM_README.md).
 
-- Video walkthrough (YouTube): _link to add_
-- LinkedIn post: _link to add_
+- Video walkthrough (YouTube, in French): https://www.youtube.com/watch?v=9wIHaXNoJ7w
+- LinkedIn post (in French): https://lnkd.in/p/e4837A5D
 
 ## The question
 
@@ -23,15 +23,15 @@ More files in [`examples/`](examples/): the reference image, the per-instance ma
 
 ## Honest takeaways
 
-- **INSID3 is not bulletproof.** It can miss objects, pick wrong ones (similar shape but a different thing, as above), and **the output changes from one inference to another**. Do not use it as an automatic labeler.
+- **INSID3 is not bulletproof.** It can miss objects, pick wrong ones, and **the output changes from one inference to another**. Do not use it as an automatic labeler.
 - **It is a good prelabeling tool when a human reviews the result.** Correcting a mask is much faster than drawing one from scratch, and you only need one annotated example to start.
-- **It matters most when SAM3 can't help.** If SAM3 (text/concept prompts) does not have the domain knowledge to segment your object, INSID3 lets you define the object by example instead.
+- **It matters most when SAM3 can't help.** If SAM3 (text/concept prompts) or newer VLMs do not have the domain knowledge to segment your object, INSID3 might let you define the object by example instead.
 
 ## The workflow
 
 1. **Make one reference mask** with SAM2 from a click or two (`make_mask.py`).
 2. **Run INSID3** on your unlabeled images with that reference (`run_minimal.py`).
-3. **Review and correct** the masks in an annotation tool. `mask_to_coco.py` exports a mask as COCO 1.0 so you can import it into CVAT.
+3. **Review and correct** the masks in an annotation tool. `mask_to_coco.py` exports a mask as COCO 1.0 so you can import it into CVAT (an open-source labeling tool).
 4. **Fine-tune a small model** on the corrected labels. It is cheaper and more stable at inference than running DINOv3 + INSID3 every time. The video explains this step in detail.
 
 ## Setup
